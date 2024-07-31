@@ -1,0 +1,30 @@
+<div class="col-md-3">
+  <h2>User info</h2>
+  <table class="table">
+    <tr>
+      <%= image_tag user.get_profile_image(100,100) %>
+    </tr>
+    <tr>
+      <th>name</th>
+      <th><%= user.name %></th>
+    </tr>
+    <tr>
+      <th>introduction</th>
+      <th><%= user.introduction %></th>
+    </tr>
+  </table>
+    <div class="row">
+      <%= link_to edit_user_path(user.id), class:"nav-link text-light" do %>
+        <i class="fa-solid fa-user-gear fa-3x " style="color:black;"></i>
+      <% end %>
+    </div>
+    <h2 class="mt-3">New book</h2>
+    <!--新規投稿フォームを作成-->
+    <%= form_with model: Book.new, url: books_path do |f| %>
+      <p>Title</p>
+      <%= f.text_field :title %>
+      <p>Opinion</p>
+      <%= f.text_area :body %>
+      <%= f.submit 'Create Book' %>
+    <% end %>
+</div>
